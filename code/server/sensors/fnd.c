@@ -1,13 +1,16 @@
 #include <wiringPi.h>
 #include <stdio.h>
+#include <pthread.h>
 
 #include "sensors.h"
 
 int pins[4] = {23, 18, 15, 14}; // BCM D, C, B, A
 
-volatile int fnd_stop_flag = 0;
+static volatile int fnd_stop_flag = 0;
+static volatile int fnd_count_running = 0;
+static pthread_t fnd_tid;
 
-int fnd_print(int num)
+static void fnd_print(int num)
 {
     int i;
 
@@ -21,24 +24,19 @@ int fnd_print(int num)
         int bit = (num >> i) & 0x01;   // b0, b1, b2, b3
         digitalWrite(pins[3 - i], bit ? HIGH : LOW);
     }
-
-    return 0;
 }
 
-
-int fnd_count(){
-    fnd_stop_flag = 0;
-
+static void fnd_count(){
     int i;
 
-    for(i=3; 0<=i; --i){
+    for(i=9; 0<=i; --i){
         if(fnd_stop_flag) break;
 
         fnd_print(i);
         delay(1000);
     }
 
-    if(!fnd_stop_flag) buz_beep_play();
+    if(!fnd_stop_flag) buz_beep();
 
     // 초기화
     for (i = 0; i < 4; ++i) {
@@ -46,8 +44,30 @@ int fnd_count(){
     }
 }
 
-void fnd_stop(){
-    fnd_stop_flag = 1;
+static void *fnd_count_thread(void *arg)
+{
+    fnd_count_running = 1;
+    fnd_count();
+    fnd_count_running = 0;
+    return NULL;
+}
+
+
+//
+
+void fnd_count_start(){
+    if(!fnd_count_running){
+        fnd_stop_flag = 0;
+        pthread_create(&fnd_tid, NULL, fnd_count_thread, NULL);
+    }
+}
+
+
+void fnd_count_stop(){
+     if (fnd_count_running) {
+        fnd_stop_flag = 1;
+        pthread_join(fnd_tid, NULL);
+    }
 }
 
 

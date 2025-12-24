@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LED 24
+#define LED 12
 
 void led_on()
 {
@@ -17,12 +17,11 @@ void led_off()
     digitalWrite(LED, HIGH); // LOW(on), HIGH(off)
 }
 
-void led_brightness(int level)
+void led_brightness_set(int level)
 {
     pinMode(LED, OUTPUT); 		/* Pin의 출력 설정 */
     softPwmCreate(LED, 0, 100); 	/* PWM의 범위 설정 */
-
-    softPwmWrite(LED, level); 		/* LED 끄기 */
+    softPwmWrite(LED, 100 - level); // active-low 기준
 }
 
 // int main(int argc, char **argv)

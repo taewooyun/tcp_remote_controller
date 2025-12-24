@@ -2,22 +2,22 @@
 #define SENSORS_H
 
 /* buzzer */
-int buz_music_play(void);
+int buz_music_start(void);
 void buz_music_stop(void);
-int buz_beep_play(void);
+int buz_beep(void);
 
 /* led */
 int led_on(void);
 int led_off(void);
-void led_brightness(int);
+void led_brightness_set(int);
 
 /* fnd */
-int fnd_count(void);
-void fnd_stop(void);
+void fnd_count_start(void);
+void fnd_count_stop(void);
 
-/* light */
+/* cds */
 int cds_value(void);
-int cds_sensing_start(void);
+void cds_sensing_start(void);
 void cds_sensing_stop(void);
 
 #endif

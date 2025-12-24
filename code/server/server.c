@@ -29,6 +29,12 @@ device_cmd_t *cmd_tail = NULL;
 pthread_mutex_t cmd_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t  cmd_cond  = PTHREAD_COND_INITIALIZER;
 
+
+pthread_t buz_tid;
+pthread_t cds_tid;
+pthread_t fnd_tid;
+
+
 /* =========================
  * 디바이스 제어 함수 (이미 구현했다고 가정)
  * ========================= */
@@ -44,11 +50,15 @@ void control_device(const char *cmd)
     else if (strcmp(clean, "LED_OFF") == 0) {
         led_off();
     }
-    else if (strcmp(clean, "BRIGHTNESS") == 0) {
-        
+    else if (strncmp(clean, "BRIGHTNESS", 10) == 0) {
+        int level;
+
+        if (sscanf(clean, "BRIGHTNESS %d", &level) == 1) {
+            led_brightness_set(level);
+        }
     }
     else if (strcmp(clean, "BUZZER_ON") == 0) {
-        buz_music_play();
+        buz_music_start();
     }
     else if (strcmp(clean, "BUZZER_OFF") == 0) {
         buz_music_stop();
@@ -60,16 +70,15 @@ void control_device(const char *cmd)
         cds_sensing_stop();
     }
     else if (strcmp(clean, "SEGMENT_START") == 0) {
-        fnd_count();
+        fnd_count_start();
     }
     else if (strcmp(clean, "SEGMENT_STOP") == 0) {
-        fnd_stop();
+        fnd_count_stop();
     }
     else if (strcmp(clean, "EXIT") == 0) {
 
     }
     
-
     printf("[DEVICE] execute: %s\n", clean);
 }
 

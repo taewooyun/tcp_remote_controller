@@ -1,11 +1,14 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 #define CDS 	11 	/* BCM 11 */
-#define LED 	24 	/* BCM 24 */
+#define LED 	12 	/* BCM 12 */
 
 volatile int cds_stop_flag = 0;
+static volatile int cds_count_running = 0;
+static pthread_t cds_tid;
 
 int cds_value()
 {
@@ -14,7 +17,7 @@ int cds_value()
     return digitalRead(CDS);
 }
 
-int cds_sensing_start()
+static void cds_sensing()
 {
     cds_stop_flag = 0;
 
@@ -34,11 +37,30 @@ int cds_sensing_start()
         delay(500);
     }
 
-    return 0;
+    digitalWrite(LED, HIGH); 	/* LED 끄기(Off) */
 }
 
+static void *cds_sensing_thread(void *arg)
+{
+    cds_count_running = 1;
+    cds_sensing();
+    cds_count_running = 0;
+    return NULL;
+}
+
+void cds_sensing_start(){
+    if(!cds_count_running){
+        cds_stop_flag = 0;
+        pthread_create(&cds_tid, NULL, cds_sensing_thread, NULL);
+    }
+}
+
+
 void cds_sensing_stop(){
-    cds_stop_flag = 1;
+     if (cds_count_running) {
+        cds_stop_flag = 1;
+        pthread_join(cds_tid, NULL);
+    }
 }
 
 

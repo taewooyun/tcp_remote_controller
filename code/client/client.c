@@ -37,7 +37,7 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    int input;
+    int input, param;
 
     while (1)
     {
@@ -78,9 +78,17 @@ int main(int argc, char **argv)
             break;
 
         case 3:
-            strcpy(mesg, "BRIGHTNESS");
-            break;
+            while (1)
+            {
+                printf("밝기 (0 ~ 100) : ");
+                scanf("%d", &param);
 
+                if(param < 0 || 100 < param) { printf("out of range.\n"); continue;}
+
+                snprintf(mesg, BUFSIZ, "BRIGHTNESS %d", param);
+                break;
+            }
+            break;
         case 4:
             strcpy(mesg, "BUZZER_ON");
             break;
