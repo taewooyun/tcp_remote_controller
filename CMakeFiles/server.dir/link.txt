@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/server.dir/code/server/server.c.o -o exec/server  -Wl,-rpath,"\$ORIGIN/../lib:/home/ottl/github/tcp_remote_controller/lib" lib/libsensors.so -lpthread -lwiringPi -lpthread 

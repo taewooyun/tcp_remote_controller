@@ -1,0 +1,5 @@
+/home/ottl/github/tcp_remote_controller/build/CMakeFiles/rebuild_cache.dir
+/home/ottl/github/tcp_remote_controller/build/CMakeFiles/edit_cache.dir
+/home/ottl/github/tcp_remote_controller/build/CMakeFiles/client.dir
+/home/ottl/github/tcp_remote_controller/build/CMakeFiles/server.dir
+/home/ottl/github/tcp_remote_controller/build/CMakeFiles/sensors.dir

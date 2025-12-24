@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ottl/github/tcp_remote_controller/code/client/client.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+sys/socket.h
+-
+arpa/inet.h
+-
+

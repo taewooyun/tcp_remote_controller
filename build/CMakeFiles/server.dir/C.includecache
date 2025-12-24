@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ottl/github/tcp_remote_controller/code/server/sensors/sensors.h
+
+/home/ottl/github/tcp_remote_controller/code/server/server.c
+./sensors/sensors.h
+/home/ottl/github/tcp_remote_controller/code/server/sensors/sensors.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+pthread.h
+-
+arpa/inet.h
+-
+wiringPi.h
+-
+dirent.h
+-
+sys/stat.h
+-
+sys/types.h
+-
+errno.h
+-
+
