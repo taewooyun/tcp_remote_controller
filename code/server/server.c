@@ -6,6 +6,10 @@
 #include <pthread.h>
 #include <arpa/inet.h>
 #include <wiringPi.h>
+#include <dirent.h>    // opendir, readdir, closedir
+#include <sys/stat.h> // stat, struct stat
+#include <sys/types.h>// DIR, off_t (플랫폼 안전)
+#include <errno.h>    // errno (에러 처리용, 권장)
 
 #define SERVER_PORT 5000
 #define MAX_CLIENT  10
@@ -153,8 +157,12 @@ void *client_thread(void *arg)
 
     while ((n = recv(client_fd, buf, BUF_SIZE - 1, 0)) > 0) {
         buf[n] = '\0';
-        printf("[SERVER] recv: %s", buf);
-        enqueue_cmd(client_fd, buf);
+
+        if (strncmp(buf, "CAPTURE_DOWNLOAD", 16) == 0) {
+            handle_capture_download(client_fd);
+        } else {
+            enqueue_cmd(client_fd, buf);
+        }
     }
 
     close(client_fd);
@@ -165,6 +173,142 @@ void *client_thread(void *arg)
 /* =========================
  * main
  * ========================= */
+
+void handle_capture_download(int client_fd)
+{
+    char buf[BUF_SIZE];
+    int n;
+
+    /* =========================
+     * 1. 이미지 목록 전송
+     * ========================= */
+    send_capture_list(client_fd);
+
+    /* =========================
+     * 2. 클라이언트 선택 대기
+     * ========================= */
+    n = recv(client_fd, buf, BUF_SIZE - 1, 0);
+    if (n <= 0) {
+        printf("[DOWNLOAD] client disconnected\n");
+        return;
+    }
+
+    buf[n] = '\0';
+    printf("[DOWNLOAD] recv: %s", buf);
+
+    /* =========================
+     * 3. GET index 파싱
+     * ========================= */
+    int index;
+    if (sscanf(buf, "GET %d", &index) != 1) {
+        send(client_fd, "ERR INVALID_CMD\n", 16, 0);
+        return;
+    }
+
+    char filename[256];
+    if (get_capture_filename(index, filename, sizeof(filename)) < 0) {
+        send(client_fd, "ERR INVALID_INDEX\n", 18, 0);
+        return;
+    }
+
+    /* =========================
+     * 4. 파일 전송
+     * ========================= */
+    send_file_with_progress(client_fd, filename);
+
+    printf("[DOWNLOAD] completed: %s\n", filename);
+}
+
+int get_capture_filename(int index, char *out, int out_sz)
+{
+    DIR *dir = opendir("./data");
+    struct dirent *entry;
+    struct stat st;
+
+    if (!dir) return -1;
+
+    int i = 0;
+
+    while ((entry = readdir(dir)) != NULL) {
+        if (!strstr(entry->d_name, ".jpg"))
+            continue;
+
+        if (i == index) {
+            strncpy(out, entry->d_name, out_sz);
+            closedir(dir);
+            return 0;
+        }
+        i++;
+    }
+
+    closedir(dir);
+    return -1;
+}
+
+void send_capture_list(int fd)
+{
+    DIR *dir = opendir("./data");
+    struct dirent *entry;
+    struct stat st;
+
+    send(fd, "LIST_BEGIN\n", 11, 0);
+
+    int idx = 0;
+    while ((entry = readdir(dir)) && idx < 10) {
+        if (strstr(entry->d_name, ".jpg")) {
+            char path[256];
+            snprintf(path, sizeof(path), "./data/%s", entry->d_name);
+            stat(path, &st);
+
+            char line[256];
+            snprintf(line, sizeof(line),
+                     "%d %s %ld\n", idx, entry->d_name, st.st_size);
+            send(fd, line, strlen(line), 0);
+            idx++;
+        }
+    }
+
+    send(fd, "LIST_END\n", 9, 0);
+    closedir(dir);
+}
+
+void send_file_with_progress(int fd, const char *filename)
+{
+    char path[256];
+    snprintf(path, sizeof(path), "./data/%s", filename);
+
+    FILE *fp = fopen(path, "rb");
+    if (!fp) {
+        send(fd, "ERR FILE_OPEN\n", 14, 0);
+        return;
+    }
+
+    struct stat st;
+    stat(path, &st);
+
+    long total = st.st_size;
+    long sent = 0;
+
+    char header[128];
+    snprintf(header, sizeof(header),
+             "FILE_BEGIN %s %ld\n", filename, total);
+    send(fd, header, strlen(header), 0);
+
+    char buf[1024];
+    int n;
+
+    while ((n = fread(buf, 1, sizeof(buf), fp)) > 0) {
+        send(fd, buf, n, 0);
+        sent += n;
+
+        int percent = (sent * 100) / total;
+        // printf("[DOWNLOAD] %d%%\n", percent);
+    }
+
+    send(fd, "\nFILE_END\n", 10, 0);
+    fclose(fp);
+}
+
 
 int main(void)
 {
@@ -202,6 +346,8 @@ int main(void)
 
     listen(server_fd, MAX_CLIENT);
     printf("[SERVER] listening on port %d\n", SERVER_PORT);
+
+    cam_capture_start(); // 10초 주기 카메라 촬영 시작
 
     /* 클라이언트 accept 루프 */
     while (1) {

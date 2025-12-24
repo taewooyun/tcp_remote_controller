@@ -20,4 +20,6 @@ int cds_value(void);
 void cds_sensing_start(void);
 void cds_sensing_stop(void);
 
+/* camera */
+void cam_capture_start();
 #endif
