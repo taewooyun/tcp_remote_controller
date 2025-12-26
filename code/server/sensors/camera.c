@@ -21,8 +21,9 @@ static void cam_capture()
                  "./data/%Y%m%d_%H%M%S.jpg", t);
 
         snprintf(cmd, sizeof(cmd),
-                "libcamera-still -n -o %s > /dev/null 2>&1",
-            filename);
+                "libcamera-still -n -o %s "
+                "> /dev/null 2>&1"
+            , filename);
 
         int ret = system(cmd);
 

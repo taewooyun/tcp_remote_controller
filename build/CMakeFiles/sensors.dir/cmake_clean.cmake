@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../lib/libsensors.pdb"
-  "../lib/libsensors.so"
+  "../exec/lib/libsensors.pdb"
+  "../exec/lib/libsensors.so"
   "CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o"
   "CMakeFiles/sensors.dir/code/server/sensors/camera.c.o"
   "CMakeFiles/sensors.dir/code/server/sensors/cds.c.o"

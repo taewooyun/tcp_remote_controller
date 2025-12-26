@@ -76,35 +76,22 @@ include CMakeFiles/sensors.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sensors.dir/flags.make
 
-CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o: CMakeFiles/sensors.dir/flags.make
-CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o: ../code/server/sensors/buzzer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c
+CMakeFiles/sensors.dir/code/server/sensors/led.c.o: CMakeFiles/sensors.dir/flags.make
+CMakeFiles/sensors.dir/code/server/sensors/led.c.o: ../code/server/sensors/led.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sensors.dir/code/server/sensors/led.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/led.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c
 
-CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c > CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i
+CMakeFiles/sensors.dir/code/server/sensors/led.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/led.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c > CMakeFiles/sensors.dir/code/server/sensors/led.c.i
 
-CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c -o CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s
-
-CMakeFiles/sensors.dir/code/server/sensors/camera.c.o: CMakeFiles/sensors.dir/flags.make
-CMakeFiles/sensors.dir/code/server/sensors/camera.c.o: ../code/server/sensors/camera.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sensors.dir/code/server/sensors/camera.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/camera.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c
-
-CMakeFiles/sensors.dir/code/server/sensors/camera.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/camera.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c > CMakeFiles/sensors.dir/code/server/sensors/camera.c.i
-
-CMakeFiles/sensors.dir/code/server/sensors/camera.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/camera.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c -o CMakeFiles/sensors.dir/code/server/sensors/camera.c.s
+CMakeFiles/sensors.dir/code/server/sensors/led.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/led.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c -o CMakeFiles/sensors.dir/code/server/sensors/led.c.s
 
 CMakeFiles/sensors.dir/code/server/sensors/cds.c.o: CMakeFiles/sensors.dir/flags.make
 CMakeFiles/sensors.dir/code/server/sensors/cds.c.o: ../code/server/sensors/cds.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/sensors.dir/code/server/sensors/cds.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/sensors.dir/code/server/sensors/cds.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/cds.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/cds.c
 
 CMakeFiles/sensors.dir/code/server/sensors/cds.c.i: cmake_force
@@ -114,6 +101,19 @@ CMakeFiles/sensors.dir/code/server/sensors/cds.c.i: cmake_force
 CMakeFiles/sensors.dir/code/server/sensors/cds.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/cds.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/cds.c -o CMakeFiles/sensors.dir/code/server/sensors/cds.c.s
+
+CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o: CMakeFiles/sensors.dir/flags.make
+CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o: ../code/server/sensors/buzzer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c
+
+CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c > CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.i
+
+CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c -o CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.s
 
 CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o: CMakeFiles/sensors.dir/flags.make
 CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o: ../code/server/sensors/fnd.c
@@ -128,42 +128,42 @@ CMakeFiles/sensors.dir/code/server/sensors/fnd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/fnd.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/fnd.c -o CMakeFiles/sensors.dir/code/server/sensors/fnd.c.s
 
-CMakeFiles/sensors.dir/code/server/sensors/led.c.o: CMakeFiles/sensors.dir/flags.make
-CMakeFiles/sensors.dir/code/server/sensors/led.c.o: ../code/server/sensors/led.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/sensors.dir/code/server/sensors/led.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/led.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c
+CMakeFiles/sensors.dir/code/server/sensors/camera.c.o: CMakeFiles/sensors.dir/flags.make
+CMakeFiles/sensors.dir/code/server/sensors/camera.c.o: ../code/server/sensors/camera.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/sensors.dir/code/server/sensors/camera.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sensors.dir/code/server/sensors/camera.c.o -c /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c
 
-CMakeFiles/sensors.dir/code/server/sensors/led.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/led.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c > CMakeFiles/sensors.dir/code/server/sensors/led.c.i
+CMakeFiles/sensors.dir/code/server/sensors/camera.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sensors.dir/code/server/sensors/camera.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c > CMakeFiles/sensors.dir/code/server/sensors/camera.c.i
 
-CMakeFiles/sensors.dir/code/server/sensors/led.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/led.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/led.c -o CMakeFiles/sensors.dir/code/server/sensors/led.c.s
+CMakeFiles/sensors.dir/code/server/sensors/camera.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sensors.dir/code/server/sensors/camera.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c -o CMakeFiles/sensors.dir/code/server/sensors/camera.c.s
 
 # Object files for target sensors
 sensors_OBJECTS = \
-"CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o" \
-"CMakeFiles/sensors.dir/code/server/sensors/camera.c.o" \
+"CMakeFiles/sensors.dir/code/server/sensors/led.c.o" \
 "CMakeFiles/sensors.dir/code/server/sensors/cds.c.o" \
+"CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o" \
 "CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o" \
-"CMakeFiles/sensors.dir/code/server/sensors/led.c.o"
+"CMakeFiles/sensors.dir/code/server/sensors/camera.c.o"
 
 # External object files for target sensors
 sensors_EXTERNAL_OBJECTS =
 
-../lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o
-../lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/camera.c.o
-../lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/cds.c.o
-../lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o
-../lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/led.c.o
-../lib/libsensors.so: CMakeFiles/sensors.dir/build.make
-../lib/libsensors.so: CMakeFiles/sensors.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared library ../lib/libsensors.so"
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/led.c.o
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/cds.c.o
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/code/server/sensors/camera.c.o
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/build.make
+../exec/lib/libsensors.so: CMakeFiles/sensors.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C shared library ../exec/lib/libsensors.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sensors.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/sensors.dir/build: ../lib/libsensors.so
+CMakeFiles/sensors.dir/build: ../exec/lib/libsensors.so
 
 .PHONY : CMakeFiles/sensors.dir/build
 

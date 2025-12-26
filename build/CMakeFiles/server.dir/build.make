@@ -98,7 +98,7 @@ server_EXTERNAL_OBJECTS =
 
 ../exec/server/server: CMakeFiles/server.dir/code/server/server.c.o
 ../exec/server/server: CMakeFiles/server.dir/build.make
-../exec/server/server: ../lib/libsensors.so
+../exec/server/server: ../exec/lib/libsensors.so
 ../exec/server/server: CMakeFiles/server.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../exec/server/server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
