@@ -6,10 +6,14 @@
 
 #IncludeRegexTransform: 
 
-/home/ottl/github/tcp_remote_controller/code/server/sensors/buzzer.c
-wiringPi.h
+/home/ottl/github/tcp_remote_controller/code/server/sensors/camera.c
+unistd.h
 -
-softTone.h
+stdlib.h
+-
+time.h
+-
+stdio.h
 -
 pthread.h
 -

@@ -194,8 +194,16 @@ void handle_capture_download(int client_fd)
     }
 
     buf[n] = '\0';
+    buf[strcspn(buf, "\r\n")] = 0;
+    
     printf("[DOWNLOAD] recv: %s", buf);
-
+    
+    // cancel 처리
+    if (strcmp(buf, "0") == 0) {
+        printf("\n[DOWNLOAD] canceled by client\n");
+        return;
+    }
+    
     /* =========================
      * 3. GET index 파싱
      * ========================= */
@@ -251,10 +259,10 @@ void send_capture_list(int fd)
     struct dirent *entry;
     struct stat st;
 
-    send(fd, "LIST_BEGIN\n", 11, 0);
+    // send(fd, "LIST_BEGIN\n", 11, 0);
 
-    int idx = 0;
-    while ((entry = readdir(dir)) && idx < 10) {
+    int idx = 1;
+    while ((entry = readdir(dir)) && idx <= 10) {
         if (strstr(entry->d_name, ".jpg")) {
             char path[256];
             snprintf(path, sizeof(path), "./data/%s", entry->d_name);
@@ -347,7 +355,7 @@ int main(void)
     listen(server_fd, MAX_CLIENT);
     printf("[SERVER] listening on port %d\n", SERVER_PORT);
 
-    cam_capture_start(); // 10초 주기 카메라 촬영 시작
+    // cam_capture_start(); // 1분 주기 카메라 촬영 시작
 
     /* 클라이언트 accept 루프 */
     while (1) {

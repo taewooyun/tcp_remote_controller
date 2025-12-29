@@ -51,6 +51,7 @@ static void *cam_capture_thread(void *arg)
 
 void cam_capture_start()
 {
+    printf("[SERVER] capture started\n");
     if(!cam_capture_running){
         pthread_create(&cam_tid, NULL, cam_capture_thread, NULL);
     }

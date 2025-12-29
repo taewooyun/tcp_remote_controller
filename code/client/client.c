@@ -35,7 +35,7 @@ void handle_capture_download_client(int sock)
     char buf[BUF_SIZE];
 
     /* 서버는 이미 LIST_BEGIN ~ LIST_END 를 보냄 */
-    printf("\n=== Capture List ===\n");
+    printf("\n==== Capture List ====\n");
 
     while (1) {
         if (recv_line(sock, buf, sizeof(buf)) <= 0)
@@ -53,7 +53,22 @@ void handle_capture_download_client(int sock)
     scanf("%d", &index);
     getchar(); // 개행 제거
 
-    snprintf(buf, sizeof(buf), "GET %d\n", index);
+     /* CANCEL 처리 */
+    if (index == 0) {
+        send(sock, "0\n", 2, 0);
+        
+        printf("Download canceled\n");
+        return;
+    }
+
+    /* 범위 체크 */
+    if (index < 1 || index > 10) {
+        printf("Invalid index\n");
+        send(sock, "0\n", 2, 0);
+        return;
+    }
+
+    snprintf(buf, sizeof(buf), "GET %d\n", index-1); // 인덱스 맞추기
     send(sock, buf, strlen(buf), 0);
 
     /* FILE_BEGIN 수신 */
@@ -150,8 +165,8 @@ int main(int argc, char **argv)
             "3. Set Brightness\n"
             "4. BUZZER ON\n"
             "5. BUZZER OFF\n"
-            "6. SENSOR ON\n"
-            "7. SENSOR OFF\n"
+            "6. CDS SENSOR ON\n"
+            "7. CDS SENSOR OFF\n"
             "8. SEGMENT START\n"
             "9. SEGMENT STOP\n"
             "10. CAPTURE DOWNLOAD\n"
@@ -192,7 +207,7 @@ int main(int argc, char **argv)
             snprintf(mesg, sizeof(mesg), "CAPTURE_DOWNLOAD\n");
             send(sock, mesg, strlen(mesg), 0);
             handle_capture_download_client(sock);
-            continue;   // ★ 아래 recv() 안 탐
+            continue;   // 아래 recv() 안 탐
 
         default:
             printf("Invalid selection\n");
