@@ -38,7 +38,6 @@ static void fnd_count(){
 
     if(!fnd_stop_flag) buz_beep();
 
-    // 초기화
     for (i = 0; i < 4; ++i) {
         digitalWrite(pins[i], HIGH);
     }

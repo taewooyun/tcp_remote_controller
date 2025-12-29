@@ -4,9 +4,25 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <signal.h>
 
 #define TCP_PORT 5000
 #define BUF_SIZE 1024
+
+
+int g_sock = -1;
+
+void sigint_handler(int signo)
+{
+    printf("\nSIGINT received. Client exiting safely...\n");
+
+    if (g_sock != -1) {
+        send(g_sock, "EXIT\n", 5, 0); // 서버에 정상 종료 알림
+        close(g_sock);
+    }
+
+    exit(0);
+}
 
 /* =========================
  * 라인 단위 수신 (TCP 필수)
@@ -49,7 +65,7 @@ void handle_capture_download_client(int sock)
 
     /* 사용자 선택 */
     int index;
-    printf("Select index: ");
+    printf("Select index(1~10, 0: CANCEL): ");
     scanf("%d", &index);
     getchar(); // 개행 제거
 
@@ -128,6 +144,14 @@ void handle_capture_download_client(int sock)
  * ========================= */
 int main(int argc, char **argv)
 {
+    /* SIGINT만 처리 */
+    signal(SIGINT, sigint_handler);
+
+    /* 다른 종료 시그널 무시 */
+    signal(SIGTERM, SIG_IGN);
+    signal(SIGHUP, SIG_IGN);
+    signal(SIGQUIT, SIG_IGN);
+
     int sock;
     struct sockaddr_in servaddr;
     char mesg[BUF_SIZE];
@@ -144,6 +168,8 @@ int main(int argc, char **argv)
         perror("socket");
         return -1;
     }
+
+    g_sock = sock;
 
     /* 서버 주소 설정 */
     memset(&servaddr, 0, sizeof(servaddr));
@@ -184,6 +210,7 @@ int main(int argc, char **argv)
             snprintf(mesg, sizeof(mesg), "EXIT\n");
             send(sock, mesg, strlen(mesg), 0);
             close(sock);
+            g_sock = -1; // 소켓 정리
             return 0;
 
         case 1: snprintf(mesg, sizeof(mesg), "LED_ON\n"); break;

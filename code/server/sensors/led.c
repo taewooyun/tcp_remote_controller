@@ -23,12 +23,3 @@ void led_brightness_set(int level)
     softPwmCreate(LED, 0, 100); 	/* PWM의 범위 설정 */
     softPwmWrite(LED, 100 - level); // active-low 기준
 }
-
-// int main(int argc, char **argv)
-// {   
-//     wiringPiSetupGpio(); // BCM pin
-//     led_brightness(50);
-//     delay(5000);     
-
-//     return 0;
-// }

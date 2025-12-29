@@ -33,4 +33,12 @@ sys/types.h
 -
 errno.h
 -
+dirent.h
+-
+signal.h
+-
+fcntl.h
+-
+sys/prctl.h
+-
 

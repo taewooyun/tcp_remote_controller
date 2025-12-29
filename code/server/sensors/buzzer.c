@@ -111,10 +111,3 @@ int buz_beep(void)
     softToneWrite(BUZ, 0);
     return 0;
 }
-
-// int main(){
-//     wiringPiSetupGpio(); // BCM pin
-//     buz_music_play();
-
-//     return 0;
-// }

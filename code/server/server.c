@@ -10,10 +10,18 @@
 #include <sys/stat.h> // stat, struct stat
 #include <sys/types.h>// DIR, off_t (플랫폼 안전)
 #include <errno.h>    // errno (에러 처리용, 권장)
+#include <dirent.h> // alphasort
+#include <signal.h> // deamon
+#include <fcntl.h>  // deamon
+#include <sys/prctl.h>
 
 #define SERVER_PORT 5000
 #define MAX_CLIENT  10
 #define BUF_SIZE    128
+
+#define MAX_CAPTURE 10
+char capture_list[MAX_CAPTURE][256];
+int capture_count = 0;
 
 /* =========================
  * 디바이스 명령 구조체
@@ -137,7 +145,13 @@ void *device_thread(void *arg)
         device_cmd_t *cmd = dequeue_cmd();
 
         control_device(cmd->cmd);
-        send(cmd->client_fd, "OK\n", 3, 0);
+    
+        char resp[BUF_SIZE + 16];
+
+        snprintf(resp, sizeof(resp),
+                 "OK %s", cmd->cmd);
+
+        send(cmd->client_fd, resp, strlen(resp), 0);
 
         free(cmd);
     }
@@ -229,55 +243,52 @@ void handle_capture_download(int client_fd)
 
 int get_capture_filename(int index, char *out, int out_sz)
 {
-    DIR *dir = opendir("./data");
-    struct dirent *entry;
-    struct stat st;
+    if (index < 1 || index > capture_count)
+        return -1;
 
-    if (!dir) return -1;
-
-    int i = 0;
-
-    while ((entry = readdir(dir)) != NULL) {
-        if (!strstr(entry->d_name, ".jpg"))
-            continue;
-
-        if (i == index) {
-            strncpy(out, entry->d_name, out_sz);
-            closedir(dir);
-            return 0;
-        }
-        i++;
-    }
-
-    closedir(dir);
-    return -1;
+    strncpy(out, capture_list[index - 1], out_sz);
+    return 0;
 }
 
 void send_capture_list(int fd)
 {
-    DIR *dir = opendir("./data");
-    struct dirent *entry;
-    struct stat st;
+    struct dirent **namelist;
+    int n = scandir("./data", &namelist, NULL, alphasort);
+    if (n < 0) return;
 
-    // send(fd, "LIST_BEGIN\n", 11, 0);
-
+    capture_count = 0;
     int idx = 1;
-    while ((entry = readdir(dir)) && idx <= 10) {
-        if (strstr(entry->d_name, ".jpg")) {
-            char path[256];
-            snprintf(path, sizeof(path), "./data/%s", entry->d_name);
-            stat(path, &st);
 
-            char line[256];
-            snprintf(line, sizeof(line),
-                     "%d %s %ld\n", idx, entry->d_name, st.st_size);
-            send(fd, line, strlen(line), 0);
-            idx++;
-        }
+    for (int i = n - 1; i >= 0 && capture_count < MAX_CAPTURE; i--) {
+        if (!strstr(namelist[i]->d_name, ".jpg"))
+            continue;
+
+        char path[256];
+        struct stat st;
+        snprintf(path, sizeof(path), "./data/%s", namelist[i]->d_name);
+        if (stat(path, &st) == -1)
+            continue;
+
+        strncpy(capture_list[capture_count],
+                namelist[i]->d_name,
+                sizeof(capture_list[capture_count]));
+
+        char line[256];
+        snprintf(line, sizeof(line),
+                 "%d %s [%ld bytes]\n",
+                 idx, namelist[i]->d_name, st.st_size);
+
+        send(fd, line, strlen(line), 0);
+
+        capture_count++;
+        idx++;
     }
 
     send(fd, "LIST_END\n", 9, 0);
-    closedir(dir);
+
+    for (int i = 0; i < n; i++)
+        free(namelist[i]);
+    free(namelist);
 }
 
 void send_file_with_progress(int fd, const char *filename)
@@ -317,12 +328,67 @@ void send_file_with_progress(int fd, const char *filename)
     fclose(fp);
 }
 
+void daemonize(void)
+{
+    prctl(PR_SET_NAME, "tcp_server", 0, 0, 0); // 프로세스 이름 변경
+
+    pid_t pid;
+
+    /* 1. fork */
+    pid = fork();
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    if (pid > 0)
+        exit(EXIT_SUCCESS);  // 부모 종료
+
+    /* 2. 세션 리더 */
+    if (setsid() < 0)
+        exit(EXIT_FAILURE);
+
+    /* SIGCHLD, SIGHUP 무시 */
+    signal(SIGCHLD, SIG_IGN);
+    signal(SIGHUP, SIG_IGN);
+
+    /* 3. 두 번째 fork */
+    pid = fork();
+    if (pid < 0)
+        exit(EXIT_FAILURE);
+    if (pid > 0)
+        exit(EXIT_SUCCESS);
+
+    /* 4. 권한 마스크 */
+    umask(0);
+
+    /* 5. 루트 디렉터리로 이동 */
+    // chdir("/");
+
+    /* 6. 표준 입출력 닫기 */
+    close(STDIN_FILENO);
+    close(STDOUT_FILENO);
+    close(STDERR_FILENO);
+
+    /* /dev/null 연결 */
+    open("/dev/null", O_RDONLY);
+    open("/dev/null", O_RDWR);
+    open("/dev/null", O_RDWR);
+}
+
+void write_pid_file(void)
+{
+    FILE *fp = fopen("/var/run/tcp_server.pid", "w");
+    if (!fp) return;
+
+    fprintf(fp, "%d\n", getpid());
+    fclose(fp);
+}
 
 int main(void)
 {
+    daemonize();
+    write_pid_file();
+
     wiringPiSetupGpio(); // BCM setting
 
-    
     int server_fd, client_fd;
     struct sockaddr_in serv_addr, cli_addr;
     socklen_t cli_len = sizeof(cli_addr);
@@ -355,7 +421,7 @@ int main(void)
     listen(server_fd, MAX_CLIENT);
     printf("[SERVER] listening on port %d\n", SERVER_PORT);
 
-    // cam_capture_start(); // 1분 주기 카메라 촬영 시작
+    cam_capture_start(); // 1분 주기 카메라 촬영 시작
 
     /* 클라이언트 accept 루프 */
     while (1) {

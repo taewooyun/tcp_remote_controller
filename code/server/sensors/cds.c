@@ -12,7 +12,7 @@ static pthread_t cds_tid;
 
 int cds_value()
 {
-    pinMode(CDS, INPUT); 	/* Pin 모드를 입력으로 설정 */
+    pinMode(CDS, INPUT); 	
 
     return digitalRead(CDS);
 }
@@ -21,23 +21,23 @@ static void cds_sensing()
 {
     cds_stop_flag = 0;
 
-    pinMode(CDS, INPUT); 	/* Pin 모드를 입력으로 설정 */
-    pinMode(LED, OUTPUT); 	/* Pin 모드를 출력으로 설정 */
+    pinMode(CDS, INPUT); 	
+    pinMode(LED, OUTPUT); 	
 
 
-    while(1) { 			/* 조도 센서 검사를 위해 무한 루프를 실행한다. */
+    while(1) { 			
         if(cds_stop_flag) break;
 
-        if(digitalRead(CDS) == LOW) { 	/* 빛이 감지되면(LOW) */
-            digitalWrite(LED, LOW); 	/* LED 켜기(On) */
+        if(digitalRead(CDS) == LOW) { 	
+            digitalWrite(LED, LOW); 	
         } 
         else {
-            digitalWrite(LED, HIGH); 	/* LED 끄기(Off) */
+            digitalWrite(LED, HIGH); 	
         }
         delay(500);
     }
 
-    digitalWrite(LED, HIGH); 	/* LED 끄기(Off) */
+    digitalWrite(LED, HIGH);
 }
 
 static void *cds_sensing_thread(void *arg)

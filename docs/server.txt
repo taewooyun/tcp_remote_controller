@@ -1,0 +1,17 @@
+[SERVER] listening on port 5000
+[SERVER] capture started
+[CAM] saved: /home/ottl/github/tcp_remote_controller/exec/server/data/20251229_144800.jpg
+[SERVER] client connected
+[DEVICE] execute: LED_ON
+[DEVICE] execute: LED_OFF
+[DEVICE] execute: BRIGHTNESS 50
+[DEVICE] execute: BUZZER_ON
+[DEVICE] execute: BUZZER_OFF
+[DEVICE] execute: SENSOR_ON
+[DEVICE] execute: SENSOR_OFF
+[DEVICE] execute: SEGMENT_START
+[DEVICE] execute: SEGMENT_STOP
+[DOWNLOAD] recv: GET 0[DOWNLOAD] recv: GET 1[DOWNLOAD] completed: 20251229_144800.jpg
+[DOWNLOAD] recv: 0
+[DOWNLOAD] canceled by client
+[CAM] saved: /home/ottl/github/tcp_remote_controller/exec/server/data/20251229_144907.jpg
