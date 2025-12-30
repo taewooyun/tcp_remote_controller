@@ -330,32 +330,167 @@ code/server/sensors/led.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensors.dir/build.make CMakeFiles/sensors.dir/code/server/sensors/led.c.s
 .PHONY : code/server/sensors/led.c.s
 
-code/server/server.o: code/server/server.c.o
+code/server/src/client_handler.o: code/server/src/client_handler.c.o
 
-.PHONY : code/server/server.o
+.PHONY : code/server/src/client_handler.o
 
 # target to build an object file
-code/server/server.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/server.c.o
-.PHONY : code/server/server.c.o
+code/server/src/client_handler.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/client_handler.c.o
+.PHONY : code/server/src/client_handler.c.o
 
-code/server/server.i: code/server/server.c.i
+code/server/src/client_handler.i: code/server/src/client_handler.c.i
 
-.PHONY : code/server/server.i
+.PHONY : code/server/src/client_handler.i
 
 # target to preprocess a source file
-code/server/server.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/server.c.i
-.PHONY : code/server/server.c.i
+code/server/src/client_handler.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/client_handler.c.i
+.PHONY : code/server/src/client_handler.c.i
 
-code/server/server.s: code/server/server.c.s
+code/server/src/client_handler.s: code/server/src/client_handler.c.s
 
-.PHONY : code/server/server.s
+.PHONY : code/server/src/client_handler.s
 
 # target to generate assembly for a file
-code/server/server.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/server.c.s
-.PHONY : code/server/server.c.s
+code/server/src/client_handler.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/client_handler.c.s
+.PHONY : code/server/src/client_handler.c.s
+
+code/server/src/command_queue.o: code/server/src/command_queue.c.o
+
+.PHONY : code/server/src/command_queue.o
+
+# target to build an object file
+code/server/src/command_queue.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/command_queue.c.o
+.PHONY : code/server/src/command_queue.c.o
+
+code/server/src/command_queue.i: code/server/src/command_queue.c.i
+
+.PHONY : code/server/src/command_queue.i
+
+# target to preprocess a source file
+code/server/src/command_queue.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/command_queue.c.i
+.PHONY : code/server/src/command_queue.c.i
+
+code/server/src/command_queue.s: code/server/src/command_queue.c.s
+
+.PHONY : code/server/src/command_queue.s
+
+# target to generate assembly for a file
+code/server/src/command_queue.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/command_queue.c.s
+.PHONY : code/server/src/command_queue.c.s
+
+code/server/src/device_worker.o: code/server/src/device_worker.c.o
+
+.PHONY : code/server/src/device_worker.o
+
+# target to build an object file
+code/server/src/device_worker.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/device_worker.c.o
+.PHONY : code/server/src/device_worker.c.o
+
+code/server/src/device_worker.i: code/server/src/device_worker.c.i
+
+.PHONY : code/server/src/device_worker.i
+
+# target to preprocess a source file
+code/server/src/device_worker.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/device_worker.c.i
+.PHONY : code/server/src/device_worker.c.i
+
+code/server/src/device_worker.s: code/server/src/device_worker.c.s
+
+.PHONY : code/server/src/device_worker.s
+
+# target to generate assembly for a file
+code/server/src/device_worker.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/device_worker.c.s
+.PHONY : code/server/src/device_worker.c.s
+
+code/server/src/file_transfer.o: code/server/src/file_transfer.c.o
+
+.PHONY : code/server/src/file_transfer.o
+
+# target to build an object file
+code/server/src/file_transfer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/file_transfer.c.o
+.PHONY : code/server/src/file_transfer.c.o
+
+code/server/src/file_transfer.i: code/server/src/file_transfer.c.i
+
+.PHONY : code/server/src/file_transfer.i
+
+# target to preprocess a source file
+code/server/src/file_transfer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/file_transfer.c.i
+.PHONY : code/server/src/file_transfer.c.i
+
+code/server/src/file_transfer.s: code/server/src/file_transfer.c.s
+
+.PHONY : code/server/src/file_transfer.s
+
+# target to generate assembly for a file
+code/server/src/file_transfer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/file_transfer.c.s
+.PHONY : code/server/src/file_transfer.c.s
+
+code/server/src/main.o: code/server/src/main.c.o
+
+.PHONY : code/server/src/main.o
+
+# target to build an object file
+code/server/src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/main.c.o
+.PHONY : code/server/src/main.c.o
+
+code/server/src/main.i: code/server/src/main.c.i
+
+.PHONY : code/server/src/main.i
+
+# target to preprocess a source file
+code/server/src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/main.c.i
+.PHONY : code/server/src/main.c.i
+
+code/server/src/main.s: code/server/src/main.c.s
+
+.PHONY : code/server/src/main.s
+
+# target to generate assembly for a file
+code/server/src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/main.c.s
+.PHONY : code/server/src/main.c.s
+
+code/server/src/server.o: code/server/src/server.c.o
+
+.PHONY : code/server/src/server.o
+
+# target to build an object file
+code/server/src/server.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/server.c.o
+.PHONY : code/server/src/server.c.o
+
+code/server/src/server.i: code/server/src/server.c.i
+
+.PHONY : code/server/src/server.i
+
+# target to preprocess a source file
+code/server/src/server.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/server.c.i
+.PHONY : code/server/src/server.c.i
+
+code/server/src/server.s: code/server/src/server.c.s
+
+.PHONY : code/server/src/server.s
+
+# target to generate assembly for a file
+code/server/src/server.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/code/server/src/server.c.s
+.PHONY : code/server/src/server.c.s
 
 # Help Target
 help:
@@ -386,9 +521,24 @@ help:
 	@echo "... code/server/sensors/led.o"
 	@echo "... code/server/sensors/led.i"
 	@echo "... code/server/sensors/led.s"
-	@echo "... code/server/server.o"
-	@echo "... code/server/server.i"
-	@echo "... code/server/server.s"
+	@echo "... code/server/src/client_handler.o"
+	@echo "... code/server/src/client_handler.i"
+	@echo "... code/server/src/client_handler.s"
+	@echo "... code/server/src/command_queue.o"
+	@echo "... code/server/src/command_queue.i"
+	@echo "... code/server/src/command_queue.s"
+	@echo "... code/server/src/device_worker.o"
+	@echo "... code/server/src/device_worker.i"
+	@echo "... code/server/src/device_worker.s"
+	@echo "... code/server/src/file_transfer.o"
+	@echo "... code/server/src/file_transfer.i"
+	@echo "... code/server/src/file_transfer.s"
+	@echo "... code/server/src/main.o"
+	@echo "... code/server/src/main.i"
+	@echo "... code/server/src/main.s"
+	@echo "... code/server/src/server.o"
+	@echo "... code/server/src/server.i"
+	@echo "... code/server/src/server.s"
 .PHONY : help
 
 

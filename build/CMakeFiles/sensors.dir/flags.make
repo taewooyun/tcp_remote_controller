@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -Dsensors_EXPORTS
 
-C_INCLUDES = -I/home/ottl/github/tcp_remote_controller/code/server/sensors
+C_INCLUDES = -I/home/ottl/github/tcp_remote_controller/code/server/include -I/home/ottl/github/tcp_remote_controller/code/server/sensors
 
 C_FLAGS = -fPIC -Wall -Wextra -std=gnu11
 

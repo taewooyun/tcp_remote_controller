@@ -1,4 +1,4 @@
-/exec/server/data
-/exec/client/*.jpg
+/exec/
 /build/
 /CMakeFiles/
+/code/server/backup_server.c

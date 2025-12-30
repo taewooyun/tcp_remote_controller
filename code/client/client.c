@@ -84,7 +84,7 @@ void handle_capture_download_client(int sock)
         return;
     }
 
-    snprintf(buf, sizeof(buf), "GET %d\n", index-1); // 인덱스 맞추기
+    snprintf(buf, sizeof(buf), "GET %d\n", index); // 인덱스 맞추기
     send(sock, buf, strlen(buf), 0);
 
     /* FILE_BEGIN 수신 */

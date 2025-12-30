@@ -32,6 +32,7 @@ add_library(sensors SHARED
     ${SENSOR_SRCS}
 )
 target_include_directories(sensors PUBLIC
+    ${CMAKE_SOURCE_DIR}/code/server/include
     ${CMAKE_SOURCE_DIR}/code/server/sensors
 )
 target_link_libraries(sensors
@@ -42,7 +43,12 @@ target_link_libraries(sensors
 # 실행파일_서버
 # =========================
 add_executable(server
-    code/server/server.c
+    code/server/src/main.c
+    code/server/src/server.c
+    code/server/src/client_handler.c
+    code/server/src/command_queue.c
+    code/server/src/device_worker.c
+    code/server/src/file_transfer.c
 )
 target_link_libraries(server
     sensors

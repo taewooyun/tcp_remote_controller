@@ -76,31 +76,106 @@ include CMakeFiles/server.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/server.dir/flags.make
 
-CMakeFiles/server.dir/code/server/server.c.o: CMakeFiles/server.dir/flags.make
-CMakeFiles/server.dir/code/server/server.c.o: ../code/server/server.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/server.dir/code/server/server.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/server.c.o -c /home/ottl/github/tcp_remote_controller/code/server/server.c
+CMakeFiles/server.dir/code/server/src/main.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/main.c.o: ../code/server/src/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/server.dir/code/server/src/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/main.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/main.c
 
-CMakeFiles/server.dir/code/server/server.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/server.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/server.c > CMakeFiles/server.dir/code/server/server.c.i
+CMakeFiles/server.dir/code/server/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/main.c > CMakeFiles/server.dir/code/server/src/main.c.i
 
-CMakeFiles/server.dir/code/server/server.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/server.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/server.c -o CMakeFiles/server.dir/code/server/server.c.s
+CMakeFiles/server.dir/code/server/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/main.c -o CMakeFiles/server.dir/code/server/src/main.c.s
+
+CMakeFiles/server.dir/code/server/src/server.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/server.c.o: ../code/server/src/server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/server.dir/code/server/src/server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/server.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/server.c
+
+CMakeFiles/server.dir/code/server/src/server.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/server.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/server.c > CMakeFiles/server.dir/code/server/src/server.c.i
+
+CMakeFiles/server.dir/code/server/src/server.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/server.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/server.c -o CMakeFiles/server.dir/code/server/src/server.c.s
+
+CMakeFiles/server.dir/code/server/src/client_handler.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/client_handler.c.o: ../code/server/src/client_handler.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/server.dir/code/server/src/client_handler.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/client_handler.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/client_handler.c
+
+CMakeFiles/server.dir/code/server/src/client_handler.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/client_handler.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/client_handler.c > CMakeFiles/server.dir/code/server/src/client_handler.c.i
+
+CMakeFiles/server.dir/code/server/src/client_handler.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/client_handler.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/client_handler.c -o CMakeFiles/server.dir/code/server/src/client_handler.c.s
+
+CMakeFiles/server.dir/code/server/src/command_queue.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/command_queue.c.o: ../code/server/src/command_queue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/server.dir/code/server/src/command_queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/command_queue.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/command_queue.c
+
+CMakeFiles/server.dir/code/server/src/command_queue.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/command_queue.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/command_queue.c > CMakeFiles/server.dir/code/server/src/command_queue.c.i
+
+CMakeFiles/server.dir/code/server/src/command_queue.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/command_queue.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/command_queue.c -o CMakeFiles/server.dir/code/server/src/command_queue.c.s
+
+CMakeFiles/server.dir/code/server/src/device_worker.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/device_worker.c.o: ../code/server/src/device_worker.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/server.dir/code/server/src/device_worker.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/device_worker.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/device_worker.c
+
+CMakeFiles/server.dir/code/server/src/device_worker.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/device_worker.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/device_worker.c > CMakeFiles/server.dir/code/server/src/device_worker.c.i
+
+CMakeFiles/server.dir/code/server/src/device_worker.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/device_worker.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/device_worker.c -o CMakeFiles/server.dir/code/server/src/device_worker.c.s
+
+CMakeFiles/server.dir/code/server/src/file_transfer.c.o: CMakeFiles/server.dir/flags.make
+CMakeFiles/server.dir/code/server/src/file_transfer.c.o: ../code/server/src/file_transfer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/server.dir/code/server/src/file_transfer.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/server.dir/code/server/src/file_transfer.c.o -c /home/ottl/github/tcp_remote_controller/code/server/src/file_transfer.c
+
+CMakeFiles/server.dir/code/server/src/file_transfer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/server.dir/code/server/src/file_transfer.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ottl/github/tcp_remote_controller/code/server/src/file_transfer.c > CMakeFiles/server.dir/code/server/src/file_transfer.c.i
+
+CMakeFiles/server.dir/code/server/src/file_transfer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/server.dir/code/server/src/file_transfer.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ottl/github/tcp_remote_controller/code/server/src/file_transfer.c -o CMakeFiles/server.dir/code/server/src/file_transfer.c.s
 
 # Object files for target server
 server_OBJECTS = \
-"CMakeFiles/server.dir/code/server/server.c.o"
+"CMakeFiles/server.dir/code/server/src/main.c.o" \
+"CMakeFiles/server.dir/code/server/src/server.c.o" \
+"CMakeFiles/server.dir/code/server/src/client_handler.c.o" \
+"CMakeFiles/server.dir/code/server/src/command_queue.c.o" \
+"CMakeFiles/server.dir/code/server/src/device_worker.c.o" \
+"CMakeFiles/server.dir/code/server/src/file_transfer.c.o"
 
 # External object files for target server
 server_EXTERNAL_OBJECTS =
 
-../exec/server/server: CMakeFiles/server.dir/code/server/server.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/main.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/server.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/client_handler.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/command_queue.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/device_worker.c.o
+../exec/server/server: CMakeFiles/server.dir/code/server/src/file_transfer.c.o
 ../exec/server/server: CMakeFiles/server.dir/build.make
 ../exec/server/server: ../exec/lib/libsensors.so
 ../exec/server/server: CMakeFiles/server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../exec/server/server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ottl/github/tcp_remote_controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable ../exec/server/server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
