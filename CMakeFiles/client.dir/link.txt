@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/client.dir/code/client/client.c.o -o exec/client 

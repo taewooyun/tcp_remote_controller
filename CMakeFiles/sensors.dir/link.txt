@@ -1,1 +1,0 @@
-/usr/bin/cc -fPIC -shared -Wl,-soname,libsensors.so -o lib/libsensors.so CMakeFiles/sensors.dir/code/server/sensors/buzzer.c.o CMakeFiles/sensors.dir/code/server/sensors/camera.c.o CMakeFiles/sensors.dir/code/server/sensors/cds.c.o CMakeFiles/sensors.dir/code/server/sensors/fnd.c.o CMakeFiles/sensors.dir/code/server/sensors/led.c.o  -lwiringPi -lpthread 
