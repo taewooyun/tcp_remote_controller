@@ -1,0 +1,4 @@
+/exec/server/data
+/exec/client/*.jpg
+/build/
+/CMakeFiles/
